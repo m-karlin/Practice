@@ -2,11 +2,9 @@
 
 public static class UniqueCharFinder
 {
-    // O(n)
     public static int FindIndex(string input)
     {
         var uniqueChars = new Dictionary<char, int>();
-        // O(n)
         foreach (char letter in input)
         {
             if (uniqueChars.TryGetValue(letter, out int value))
@@ -14,7 +12,6 @@ public static class UniqueCharFinder
             else
                 uniqueChars[letter] = 1;
         }
-        // O(n)
         for (int i = 0; i < input.Length; i++)
         {
             if (uniqueChars[input[i]] == 1)
