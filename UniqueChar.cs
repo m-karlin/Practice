@@ -1,0 +1,38 @@
+﻿namespace Practice;
+
+public static class UniqueCharFinder
+{
+    // O(n)
+    public static int FindIndex(string input)
+    {
+        var uniqueChars = new Dictionary<char, int>();
+        // O(n)
+        foreach (char letter in input)
+        {
+            if (uniqueChars.TryGetValue(letter, out int value))
+                uniqueChars[letter] = ++value;
+            else
+                uniqueChars[letter] = 1;
+        }
+        // O(n)
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (uniqueChars[input[i]] == 1)
+                return i;
+        }
+        return -1;
+    }
+}
+
+public class UniqueCharTests
+{
+    [Theory]
+    [InlineData("job", 0)]
+    [InlineData("aabb", -1)]
+    [InlineData("aacbbd", 2)]
+    public void FindIndexTest(string inputString, int expectedIndex)
+    {
+        var actual = UniqueCharFinder.FindIndex(inputString);
+        Assert.Equal(expectedIndex, actual);
+    }
+}
