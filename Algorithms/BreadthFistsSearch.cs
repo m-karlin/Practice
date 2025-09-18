@@ -1,6 +1,6 @@
 ﻿namespace Practice.Algorithms;
 
-public class DepthFirstSearchTests
+public class BreadthFistsSearchTests
 {
 	private record Node<T>(Guid Id)
 	{
@@ -14,18 +14,15 @@ public class DepthFirstSearchTests
 		public bool TryFindNode(Guid id, out Node<T>? node)
 		{
 			var visited = new HashSet<Guid>();
-			var stack = new Stack<Node<T>>();
+			var queue = new Queue<Node<T>>();
+			
+			queue.Enqueue(this);
 
-			stack.Push(this);
-
-			while (stack.Count > 0)
+			while (queue.Count > 0)
 			{
-				var current = stack.Pop();
+				var current = queue.Dequeue();
 
-				if (!visited.Add(current.Id))
-				{
-					continue;
-				}
+				if (!visited.Add(current.Id)) continue;
 
 				if (current.Id == id)
 				{
@@ -33,16 +30,14 @@ public class DepthFirstSearchTests
 					return true;
 				}
 
-				for (var index = current.Children.Count - 1; index >= 0; index--)
+				foreach (var child in current.Children)
 				{
-					var children = current.Children[index];
-					if (!visited.Contains(children.Id))
+					if (!visited.Contains(child.Id))
 					{
-						stack.Push(children);
+						queue.Enqueue(child);
 					}
 				}
 			}
-
 			node = null;
 			return false;
 		}

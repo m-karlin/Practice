@@ -2,49 +2,37 @@ using Xunit.Abstractions;
 
 namespace Practice.Signal;
 
-/*
-    The task is to remove from the object tree all nodes
-    where the Alive property is false. However, if a node
-    has an Alive property that is true, all of its parents
-    and children should remain in the tree.
-
-    Extra:
-    Perform the task using recursive and iterative algorithms,
-    explain in which cases each one should be used, as well as
-    the advantages and disadvantages of each approach.
-*/
-
-public record Node(int Id, int? ParentId, bool Alive, List<Node> Children)
-{
-	public Node CreateChild(bool alive)
-	{
-		var child = new Node(
-			(Children.Count > 0 ? Children[^1].Id : Id * 10) + 1,
-			Id,
-			alive,
-			[]
-		);
-		Children.Add(child);
-		return child;
-	}
-
-	public static void Clean(Node node)
-	{
-	}
-
-	public static string Stringify(Node node, int level = 0)
-	{
-		return $"{new string('-', level)}{node.Alive.ToString()[0]}{node.Id}"
-		       + Environment.NewLine
-		       + string.Join("", node.Children.Select(child => Stringify(child, level + 1)));
-		/*return $"{new string(' ', level * 2)}Id:{node.Id} pId{(node.ParentId.HasValue ? node.ParentId : "R")}:{node.Alive}"
-		    + Environment.NewLine
-		    + string.Join("", node.Children.Select(child => Stringify(child, level + 1)));*/
-	}
-};
-
 public class NodesCleanerTests(ITestOutputHelper output)
 {
+	private record Node(int Id, int? ParentId, bool Alive, List<Node> Children)
+	{
+		public Node CreateChild(bool alive)
+		{
+			var child = new Node(
+				(Children.Count > 0 ? Children[^1].Id : Id * 10) + 1,
+				Id,
+				alive,
+				[]
+			);
+			Children.Add(child);
+			return child;
+		}
+
+		public static void Clean(Node node)
+		{
+		}
+
+		public static string Stringify(Node node, int level = 0)
+		{
+			return $"{new string('-', level)}{node.Alive.ToString()[0]}{node.Id}"
+			       + Environment.NewLine
+			       + string.Join("", node.Children.Select(child => Stringify(child, level + 1)));
+			/*return $"{new string(' ', level * 2)}Id:{node.Id} pId{(node.ParentId.HasValue ? node.ParentId : "R")}:{node.Alive}"
+			    + Environment.NewLine
+			    + string.Join("", node.Children.Select(child => Stringify(child, level + 1)));*/
+		}
+	};
+	
 	[Fact]
 	public void Test()
 	{
