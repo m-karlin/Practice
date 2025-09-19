@@ -1,4 +1,4 @@
-﻿namespace Practice;
+﻿namespace Practice.Problems;
 
 public class SomeMathTests
 {
