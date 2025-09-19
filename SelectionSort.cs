@@ -1,4 +1,4 @@
-﻿namespace Practice.Algorithms;
+﻿namespace Practice;
 
 public class SelectionSortTests
 {

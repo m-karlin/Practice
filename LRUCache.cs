@@ -1,4 +1,4 @@
-namespace Practice.Signal;
+namespace Practice;
 
 public class LRUCacheTests
 {
