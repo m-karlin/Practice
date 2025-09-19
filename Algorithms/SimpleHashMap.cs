@@ -72,7 +72,7 @@ public class SimpleHashMapTests
 
 			for (var i = 0; i < _buckets.Length; i++)
 			{
-				_buckets[i] = new List<Entry<T>>();
+				_buckets[i] = [];
 			}
 
 			Count = 0;
