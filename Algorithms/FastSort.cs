@@ -38,7 +38,7 @@ public class FastSortTests
 	}
 
 	[Fact]
-	public void Test1()
+	public void Test()
 	{
 		var numbers = new[] { 1, 3, 6, 4, 5, 2, 9, 8, 7 };
 		var sortedNumbers = Sort(numbers);
