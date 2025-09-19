@@ -2,6 +2,18 @@ using Xunit.Abstractions;
 
 namespace Practice.Signal;
 
+/*
+    The task is to remove from the object tree all nodes
+    where the Alive property is false. However, if a node
+    has an Alive property that is true, all of its parents
+    and children should remain in the tree.
+
+    Extra:
+    Perform the task using recursive and iterative algorithms,
+    explain in which cases each one should be used, as well as
+    the advantages and disadvantages of each approach.
+*/
+
 public class NodesCleanerTests(ITestOutputHelper output)
 {
 	private record Node(int Id, int? ParentId, bool Alive, List<Node> Children)
@@ -20,6 +32,7 @@ public class NodesCleanerTests(ITestOutputHelper output)
 
 		public static void Clean(Node node)
 		{
+			
 		}
 
 		public static string Stringify(Node node, int level = 0)
@@ -32,7 +45,7 @@ public class NodesCleanerTests(ITestOutputHelper output)
 			    + string.Join("", node.Children.Select(child => Stringify(child, level + 1)));*/
 		}
 	};
-	
+
 	[Fact]
 	public void Test()
 	{
