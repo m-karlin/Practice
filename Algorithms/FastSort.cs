@@ -3,6 +3,7 @@
 public class FastSortTests
 {
 	private static readonly Random Random = new();
+
 	private static int[] Sort(int[] array)
 	{
 		if (array.Length < 2)
@@ -15,11 +16,11 @@ public class FastSortTests
 
 		var less = new List<int>(array.Length);
 		var greater = new List<int>(array.Length);
-		
+
 		for (var i = 0; i < array.Length; i++)
 		{
 			if (i == pivotIndex) continue;
-        
+
 			if (array[i] <= pivot)
 			{
 				less.Add(array[i]);
