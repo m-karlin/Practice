@@ -1,6 +1,6 @@
-﻿namespace Practice.Problems;
+﻿namespace App.Problems;
 
-public class SimpleHashMapTests
+public class SimpleHashMap
 {
 	private record Entry<T>(string Key, T Value);
 
@@ -87,21 +87,27 @@ public class SimpleHashMapTests
 		}
 	}
 
-	[Fact]
-	public void Test()
+	public static void Run()
 	{
 		var hashMap = new HashMap<int>(2);
 		hashMap.Set("key1", 5);
 		hashMap.Set("key2", 10);
 		hashMap.Set("key3", 15);
 
-		Assert.Equal(3, hashMap.Count);
-		Assert.Equal(4, hashMap.Capacity);
+		// 4
+		Console.WriteLine(hashMap.Capacity);
+		// 3
+		Console.WriteLine(hashMap.Count);
 
 		hashMap.TryGetValue("key1", out var value1);
-		Assert.Equal(5, value1);
+		// 5
+		Console.WriteLine(value1);
+
 		hashMap.TryGetValue("key2", out var value2);
-		Assert.Equal(10, value2);
-		Assert.False(hashMap.TryGetValue("key4", out _));
+		// 10
+		Console.WriteLine(value2);
+
+		// false
+		Console.WriteLine(hashMap.TryGetValue("key4", out _));
 	}
 }

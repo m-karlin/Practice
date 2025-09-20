@@ -1,6 +1,6 @@
-﻿namespace Practice.Problems;
+﻿namespace App.Problems;
 
-public class UniqueCharTests
+public class UniqueChar
 {
 	private static class UniqueCharFinder
 	{
@@ -25,13 +25,13 @@ public class UniqueCharTests
 		}
 	}
 
-	[Theory]
-	[InlineData("job", 0)]
-	[InlineData("aabb", -1)]
-	[InlineData("aacbbd", 2)]
-	public void FindIndexTest(string inputString, int expectedIndex)
+	public static void Run()
 	{
-		var actual = UniqueCharFinder.FindIndex(inputString);
-		Assert.Equal(expectedIndex, actual);
+		// 0
+		Console.WriteLine(UniqueCharFinder.FindIndex("job"));
+		// -1
+		Console.WriteLine(UniqueCharFinder.FindIndex("aabb"));
+		// 2
+		Console.WriteLine(UniqueCharFinder.FindIndex("aacbbd"));
 	}
 }

@@ -1,9 +1,9 @@
-﻿namespace Practice.Problems;
+﻿namespace App.Problems;
 
 // https://solvit.space/coding/2873
-public class ReverseStringTests
+public class ReverseString
 {
-	private static void ReverseString(string[] s)
+	private static void Reverse(string[] s)
 	{
 		var i = 0;
 		var j = s.Length - 1;
@@ -17,11 +17,11 @@ public class ReverseStringTests
 		}
 	}
 
-	[Fact]
-	public void Test()
+	public static void Run()
 	{
 		string[] s = ["H", "a", "n", "n", "a", "h"];
-		ReverseString(s);
-		Assert.Equal(["h","a","n","n","a","H"], s);
+		Reverse(s);
+		// hannaH
+		Console.WriteLine(string.Join("", s));
 	}
 }

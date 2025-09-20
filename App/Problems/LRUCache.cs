@@ -1,8 +1,8 @@
-namespace Practice.Problems;
+namespace App.Problems;
 
-public class LRUCacheTests
+public class LRUCache
 {
-	public class LRUCache(int capacity)
+	private class Cache(int capacity)
 	{
 		private class Node(int key, int value, Node? next, Node? prev)
 		{
@@ -103,26 +103,23 @@ public class LRUCacheTests
 			_count--;
 		}
 	}
-	
-	[Fact]
-	public void GetExistedValue()
+
+	public static void Run()
 	{
-		var cache = new LRUCache(capacity: 2);
+		var cache = new Cache(capacity: 2);
 		cache.Put(1, 1);
 		cache.Put(2, 2);
 		var result = cache.Get(1);
-		Assert.Equal(1, result);
-	}
-
-	[Fact]
-	public void TryGetEvictedValue()
-	{
-		var cache = new LRUCache(capacity: 2);
+		// 1
+		Console.WriteLine(result);
+		
+		cache = new Cache(capacity: 2);
 		cache.Put(1, 1);
 		cache.Put(2, 2);
 		cache.Get(1);
 		cache.Put(3, 3);
-		var result = cache.Get(2);
-		Assert.Equal(-1, result);
+		var result2 = cache.Get(2);
+		// -1
+		Console.WriteLine(result2);
 	}
 }

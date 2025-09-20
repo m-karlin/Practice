@@ -1,7 +1,7 @@
-﻿namespace Practice.Problems;
+﻿namespace App.Problems;
 
 // https://leetcode.com/problems/merge-sorted-array?envType=problem-list-v2&envId=aqw21527
-public class MergeSortedArrayTests
+public class MergeSortedArray
 {
 	private static void Merge(int[] nums1, int m, int[] nums2, int n)
 	{
@@ -33,36 +33,30 @@ public class MergeSortedArrayTests
 		}
 	}
 
-	[Fact]
-	public void Test1()
+	public static void Run()
 	{
 		var nums1 = new[] { 1, 2, 3, 0, 0, 0 };
-		const int m = 3;
+		var m = 3;
 		var nums2 = new[] { 2, 5, 6 };
-		const int n = 3;
+		var n = 3;
 		Merge(nums1, m, nums2, n);
-		Assert.Equal(new[] { 1, 2, 2, 3, 5, 6 }, nums1);
-	}
+		// 1,2,2,3,5,6
+		Console.WriteLine(string.Join(",", nums1));
 
-	[Fact]
-	public void Test2()
-	{
-		var nums1 = new[] { 1 };
-		const int m = 1;
-		var nums2 = Array.Empty<int>();
-		const int n = 0;
+		nums1 = [1];
+		m = 1;
+		nums2 = [];
+		n = 0;
 		Merge(nums1, m, nums2, n);
-		Assert.Equal(new[] { 1 }, nums1);
-	}
+		// 1
+		Console.WriteLine(string.Join(",", nums1));
 
-	[Fact]
-	public void Test3()
-	{
-		var nums1 = new int[1];
-		const int m = 0;
-		var nums2 = new[] { 1 };
-		const int n = 1;
+		nums1 = [0];
+		m = 0;
+		nums2 = [1];
+		n = 1;
 		Merge(nums1, m, nums2, n);
-		Assert.Equal(new[] { 1 }, nums1);
+		// 1
+		Console.WriteLine(string.Join(",", nums1));
 	}
 }

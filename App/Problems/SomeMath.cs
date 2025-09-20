@@ -1,6 +1,6 @@
-﻿namespace Practice.Problems;
+﻿namespace App.Problems;
 
-public class SomeMathTests
+public class SomeMath
 {
 	// Модуль числа: Math.Abs(x)
 

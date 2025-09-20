@@ -1,6 +1,6 @@
-﻿namespace Practice.Problems;
+﻿namespace App.Problems;
 
-public class FastSortTests
+public class FastSort
 {
 	private static readonly Random Random = new();
 
@@ -38,11 +38,11 @@ public class FastSortTests
 		return result.ToArray();
 	}
 
-	[Fact]
-	public void Test()
+	public static void Run()
 	{
 		var numbers = new[] { 1, 3, 6, 4, 5, 2, 9, 8, 7 };
 		var sortedNumbers = Sort(numbers);
-		Assert.Equal(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, sortedNumbers);
+		// 1,2,3,4,5,6,7,8,9
+		Console.WriteLine(string.Join(",", sortedNumbers));
 	}
 }
