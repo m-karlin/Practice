@@ -1,6 +1,6 @@
 ﻿namespace App.Problems;
 
-public class FastSort
+public class QuickSort
 {
 	private static readonly Random Random = new();
 
