@@ -1,10 +1,10 @@
-﻿namespace App.Problems;
+﻿namespace App.Structures;
 
-public class SimpleHashMap
+public class HashMaps
 {
 	private record Entry<T>(string Key, T Value);
 
-	private class HashMap<T>
+	private class MyHashMap<T>
 	{
 		private const double LoadFactorThreshold = 0.75;
 		private List<Entry<T>>[] _buckets;
@@ -12,7 +12,7 @@ public class SimpleHashMap
 		public int Count { get; private set; }
 		public int Capacity => _buckets.Length;
 
-		public HashMap(int capacity = 16)
+		public MyHashMap(int capacity = 16)
 		{
 			_buckets = new List<Entry<T>>[capacity];
 			for (var i = 0; i < capacity; i++)
@@ -89,7 +89,7 @@ public class SimpleHashMap
 
 	public static void Run()
 	{
-		var hashMap = new HashMap<int>(2);
+		var hashMap = new MyHashMap<int>(2);
 		hashMap.Set("key1", 5);
 		hashMap.Set("key2", 10);
 		hashMap.Set("key3", 15);

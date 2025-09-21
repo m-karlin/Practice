@@ -1,14 +1,14 @@
-﻿namespace App.Problems;
+﻿namespace App.Structures;
 
 public class BinaryHeap
 {
 	// log(n) вставка
 	// log(n) извлечение максимального
-	private class Heap(int capacity, bool isMaxHeap = true)
+	private class MyBinaryHeap(int capacity, bool isMaxHeap = true)
 	{
-		private int[] heap = new int[capacity];
-		private int size = 0;
-		private bool isMaxHeap = isMaxHeap; // true для max-heap, false для min-heap
+		private readonly int[] _heap = new int[capacity];
+		private const int Size = 0;
+		private bool _isMaxHeap = isMaxHeap; // true для max-heap, false для min-heap
 
 		public void Push(int value)
 		{
@@ -22,24 +22,24 @@ public class BinaryHeap
 
 		public void Print()
 		{
-			Console.WriteLine("Куча: " + string.Join(", ", heap[0..size]));
+			Console.WriteLine("Куча: " + string.Join(", ", _heap[0..Size]));
 			Console.WriteLine("\nДерево:");
 			PrintTree(0, 0);
 		}
 
 		private void PrintTree(int index, int level)
 		{
-			if (index >= size) return;
+			if (index >= Size) return;
 
 			PrintTree(2 * index + 2, level + 1); // Правый ребенок
-			Console.WriteLine(new string(' ', level * 4) + heap[index]);
+			Console.WriteLine(new string(' ', level * 4) + _heap[index]);
 			PrintTree(2 * index + 1, level + 1); // Левый ребенок
 		}
 	}
 
 	public static void Run()
 	{
-		var binaryHeap = new Heap(10);
+		var binaryHeap = new MyBinaryHeap(10);
 
 		binaryHeap.Push(1);
 		binaryHeap.Push(4);

@@ -1,4 +1,4 @@
-﻿namespace App.Problems;
+﻿namespace App.NetFeatures;
 
 public class VirualOvveride
 {

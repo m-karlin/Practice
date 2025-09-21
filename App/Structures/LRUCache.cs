@@ -1,8 +1,8 @@
-namespace App.Problems;
+namespace App.Structures;
 
 public class LRUCache
 {
-	private class Cache(int capacity)
+	private class MyCache(int capacity)
 	{
 		private class Node(int key, int value, Node? next, Node? prev)
 		{
@@ -106,14 +106,14 @@ public class LRUCache
 
 	public static void Run()
 	{
-		var cache = new Cache(capacity: 2);
+		var cache = new MyCache(capacity: 2);
 		cache.Put(1, 1);
 		cache.Put(2, 2);
 		var result = cache.Get(1);
 		// 1
 		Console.WriteLine(result);
 		
-		cache = new Cache(capacity: 2);
+		cache = new MyCache(capacity: 2);
 		cache.Put(1, 1);
 		cache.Put(2, 2);
 		cache.Get(1);

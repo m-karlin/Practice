@@ -1,4 +1,4 @@
-﻿namespace App.Problems;
+﻿namespace App.Patterns;
 
 public class DDD
 {

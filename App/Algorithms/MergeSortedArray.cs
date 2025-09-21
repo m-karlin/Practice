@@ -1,4 +1,4 @@
-﻿namespace App.Problems;
+﻿namespace App.Algorithms;
 
 // https://leetcode.com/problems/merge-sorted-array?envType=problem-list-v2&envId=aqw21527
 public class MergeSortedArray
