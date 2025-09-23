@@ -7,7 +7,6 @@ public class Stacks
 		private int[] _items = new int[capacity];
 		private int _top = -1;
 
-
 		public void Push(int item)
 		{
 			if (_top == _items.Length - 1)

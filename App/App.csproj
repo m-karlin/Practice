@@ -9,4 +9,13 @@
         <RootNamespace>App</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="DotNet.Testcontainers" Version="1.7.0-beta.2269" />
+      <PackageReference Include="Npgsql" Version="9.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="PostgreSQL\Tools\" />
+    </ItemGroup>
+
 </Project>
