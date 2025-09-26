@@ -2,7 +2,7 @@
 
 public class DepthFirstSearch
 {
-	private record Node<T>(Guid Id)
+	public record Node<T>(Guid Id)
 	{
 		private readonly List<Node<T>> _children = [];
 

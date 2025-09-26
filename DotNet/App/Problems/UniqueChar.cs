@@ -2,7 +2,7 @@
 
 public class UniqueChar
 {
-	private static class UniqueCharFinder
+	public static class UniqueCharFinder
 	{
 		public static int FindIndex(string input)
 		{

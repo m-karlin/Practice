@@ -4,9 +4,9 @@ public class Boxing
 {
     public static void Run()
     {
-        int a = 5;
+        var a = 5;
         object b = a;
         // InvalidCastException
-        long c = (long)b;
+        var c = (long)b;
     }
 }

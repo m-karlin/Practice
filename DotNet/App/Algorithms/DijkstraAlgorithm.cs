@@ -3,14 +3,14 @@
 public class DijkstraAlgorithm
 {
 	// Класс для представления ребра графа
-	private class Edge(int target, int weight)
+	public class Edge(int target, int weight)
 	{
 		public int Target { get; } = target;
 		public int Weight { get; } = weight;
 	}
 
 	// Реализация алгоритма Дейкстры
-	private static int[] Dijkstra(List<Edge>[] graph, int start)
+	public static int[] Dijkstra(List<Edge>[] graph, int start)
 	{
 		var n = graph.Length;
 		var distances = new int[n];

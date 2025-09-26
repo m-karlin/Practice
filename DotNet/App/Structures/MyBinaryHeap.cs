@@ -4,8 +4,7 @@
 public class MyBinaryHeap(int capacity, bool isMaxHeap = true)
 {
 	private readonly int[] _heap = new int[capacity];
-	private int _size = 0;
-	private bool _isMaxHeap = isMaxHeap;
+	private int _size;
 
 	public void Push(int value)
 	{
@@ -23,7 +22,7 @@ public class MyBinaryHeap(int capacity, bool isMaxHeap = true)
 		if (_size <= 0)
 			throw new InvalidOperationException("Куча пуста");
 
-		int root = _heap[0];
+		var root = _heap[0];
 
 		_heap[0] = _heap[_size - 1];
 		_size--;
@@ -54,9 +53,9 @@ public class MyBinaryHeap(int capacity, bool isMaxHeap = true)
 	{
 		while (index > 0)
 		{
-			int parentIndex = (index - 1) / 2;
+			var parentIndex = (index - 1) / 2;
 			
-			bool shouldSwap = _isMaxHeap ? 
+			var shouldSwap = isMaxHeap ? 
 				_heap[parentIndex] < _heap[index] : 
 				_heap[parentIndex] > _heap[index];
 
@@ -72,13 +71,13 @@ public class MyBinaryHeap(int capacity, bool isMaxHeap = true)
 	{
 		while (true)
 		{
-			int leftChildIndex = 2 * index + 1;
-			int rightChildIndex = 2 * index + 2;
-			int targetIndex = index;
+			var leftChildIndex = 2 * index + 1;
+			var rightChildIndex = 2 * index + 2;
+			var targetIndex = index;
 
 			if (leftChildIndex < _size)
 			{
-				bool leftIsBetter = _isMaxHeap ?
+				var leftIsBetter = isMaxHeap ?
 					_heap[leftChildIndex] > _heap[targetIndex] :
 					_heap[leftChildIndex] < _heap[targetIndex];
 					
@@ -88,7 +87,7 @@ public class MyBinaryHeap(int capacity, bool isMaxHeap = true)
 
 			if (rightChildIndex < _size)
 			{
-				bool rightIsBetter = _isMaxHeap ?
+				var rightIsBetter = isMaxHeap ?
 					_heap[rightChildIndex] > _heap[targetIndex] :
 					_heap[rightChildIndex] < _heap[targetIndex];
 					
@@ -108,18 +107,4 @@ public class MyBinaryHeap(int capacity, bool isMaxHeap = true)
 	{
         (_heap[j], _heap[i]) = (_heap[i], _heap[j]);
     }
-
-    public static void Run()
-	{
-		var binaryHeap = new MyBinaryHeap(10);
-
-		binaryHeap.Push(1);
-		binaryHeap.Push(4);
-		binaryHeap.Push(5);
-		binaryHeap.Push(1);
-		binaryHeap.Push(3);
-
-		Console.WriteLine(binaryHeap.Pop());
-		Console.WriteLine(binaryHeap.Pop());
-	}
 }

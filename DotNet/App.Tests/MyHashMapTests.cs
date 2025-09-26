@@ -1,5 +1,4 @@
 using App.Structures;
-using Xunit;
 
 namespace App.Tests;
 
@@ -8,13 +7,10 @@ public class MyHashMapTests
     [Fact]
     public void Set_AddsNewItem_WhenKeyDoesNotExist()
     {
-        // Arrange
         var hashMap = new MyHashMap<int>();
         
-        // Act
         hashMap.Set("key1", 100);
         
-        // Assert
         var result = hashMap.TryGetValue("key1", out var value);
         Assert.True(result);
         Assert.Equal(100, value);
@@ -24,14 +20,13 @@ public class MyHashMapTests
     [Fact]
     public void Set_UpdatesExistingItem_WhenKeyAlreadyExists()
     {
-        // Arrange
         var hashMap = new MyHashMap<int>();
         hashMap.Set("key1", 100);
         
-        // Act
+        
         hashMap.Set("key1", 200); // Update existing key
         
-        // Assert
+        
         var result = hashMap.TryGetValue("key1", out var value);
         Assert.True(result);
         Assert.Equal(200, value);
@@ -41,14 +36,14 @@ public class MyHashMapTests
     [Fact]
     public void TryGetValue_ReturnsTrueAndValue_WhenKeyExists()
     {
-        // Arrange
+        
         var hashMap = new MyHashMap<string>();
         hashMap.Set("key1", "value1");
         
-        // Act
+        
         var result = hashMap.TryGetValue("key1", out var value);
         
-        // Assert
+        
         Assert.True(result);
         Assert.Equal("value1", value);
     }
@@ -56,14 +51,14 @@ public class MyHashMapTests
     [Fact]
     public void TryGetValue_ReturnsFalse_WhenKeyDoesNotExist()
     {
-        // Arrange
+        
         var hashMap = new MyHashMap<int>();
         hashMap.Set("key1", 100);
         
-        // Act
+        
         var result = hashMap.TryGetValue("nonexistent", out var value);
         
-        // Assert
+        
         Assert.False(result);
         Assert.Equal(default(int), value);
     }
@@ -71,10 +66,9 @@ public class MyHashMapTests
     [Fact]
     public void Count_ReturnsCorrectNumberOfItems()
     {
-        // Arrange
+        
         var hashMap = new MyHashMap<int>();
         
-        // Act & Assert
         Assert.Equal(0, hashMap.Count);
         
         hashMap.Set("key1", 100);
@@ -93,22 +87,21 @@ public class MyHashMapTests
     [Fact]
     public void Capacity_ReturnsInitialCapacity_WhenNoResizeOccurred()
     {
-        // Arrange
+        
         var hashMap = new MyHashMap<int>(16);
         
-        // Act & Assert
         Assert.Equal(16, hashMap.Capacity);
     }
     
     [Fact]
     public void Set_ResizesHashMap_WhenLoadFactorThresholdIsExceeded()
     {
-        // Arrange
+        
         var hashMap = new MyHashMap<int>(2); // Initial capacity of 2
         // With a load factor threshold of 0.75, resize should happen when we add the 2nd item
         // (2 items in 2 buckets = 1.0 load factor, which exceeds 0.75)
         
-        // Act
+        
         hashMap.Set("key1", 100);
         
         // Check capacity and count before adding the 2nd item
@@ -117,7 +110,7 @@ public class MyHashMapTests
         
         hashMap.Set("key2", 200); // This should trigger a resize
         
-        // Assert
+        
         Assert.Equal(4, hashMap.Capacity); // Capacity should double
         Assert.Equal(2, hashMap.Count);
         

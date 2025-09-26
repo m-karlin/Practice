@@ -11,7 +11,7 @@ public class As
 		// int number = (int)obj;     // InvalidCastException
 
 		// Безопасное приведение с 'as'
-		string str2 = obj as string; // Успешно
-		int? number = obj as int?;   // Вернет null (для значимых типов используйте nullable)
+		var str2 = obj as string; // Успешно
+		var number = obj as int?;   // Вернет null (для значимых типов используйте nullable)
 	}
 }

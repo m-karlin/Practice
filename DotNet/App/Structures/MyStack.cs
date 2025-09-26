@@ -21,7 +21,7 @@ public class MyStack : IEnumerable<int>
     {
         if (_top == _items.Length - 1)
         {
-            int newCapacity = _items.Length == 0 ? DefaultCapacity : _items.Length * 2;
+            var newCapacity = _items.Length == 0 ? DefaultCapacity : _items.Length * 2;
             Array.Resize(ref _items, newCapacity);
         }
 
@@ -55,7 +55,7 @@ public class MyStack : IEnumerable<int>
 
     public IEnumerator<int> GetEnumerator()
     {
-        for (int i = _top; i >= 0; i--)
+        for (var i = _top; i >= 0; i--)
         {
             yield return _items[i];
         }

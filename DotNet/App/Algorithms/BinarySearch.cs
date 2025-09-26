@@ -1,8 +1,8 @@
 ﻿namespace App.Algorithms;
 
-public class BinarySearch
+public static class BinarySearch
 {
-	private static int Search(int[] array, int value)
+	public static int Search(int[] array, int value)
 	{
 		return Search(array, value, 0, array.Length - 1);
 	}
@@ -31,18 +31,5 @@ public class BinarySearch
 
 			return -1;
 		}
-	}
-
-	public static void Run()
-	{
-		var numbers1 = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		var index1 = Search(numbers1, 7);
-		// 6
-		Console.WriteLine(index1);
-
-		var numbers = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		var index2 = Search(numbers, 10);
-		// -1
-		Console.WriteLine(index2);
 	}
 }

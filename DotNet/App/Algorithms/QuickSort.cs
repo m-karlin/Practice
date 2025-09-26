@@ -1,48 +1,48 @@
 ﻿namespace App.Algorithms;
 
-public class QuickSort
+public static class QuickSort
 {
 	private static readonly Random Random = new();
 
-	private static int[] Sort(int[] array)
+	public static void Sort(int[] array)
 	{
-		if (array.Length < 2)
-		{
-			return array;
-		}
-
-		var pivotIndex = Random.Next(array.Length);
-		var pivot = array[pivotIndex];
-
-		var less = new List<int>(array.Length);
-		var greater = new List<int>(array.Length);
-
-		for (var i = 0; i < array.Length; i++)
-		{
-			if (i == pivotIndex) continue;
-
-			if (array[i] <= pivot)
-			{
-				less.Add(array[i]);
-			}
-			else
-			{
-				greater.Add(array[i]);
-			}
-		}
-
-		var result = new List<int>();
-		result.AddRange(Sort(less.ToArray()));
-		result.Add(pivot);
-		result.AddRange(Sort(greater.ToArray()));
-		return result.ToArray();
+		Sort(array, 0, array.Length - 1);
 	}
 
-	public static void Run()
+	private static void Sort(int[] array, int low, int high)
 	{
-		var numbers = new[] { 1, 3, 6, 4, 5, 2, 9, 8, 7 };
-		var sortedNumbers = Sort(numbers);
-		// 1,2,3,4,5,6,7,8,9
-		Console.WriteLine(string.Join(",", sortedNumbers));
+		if (low < high)
+		{
+			var pivotIndex = Partition(array, low, high);
+			Sort(array, low, pivotIndex - 1);
+			Sort(array, pivotIndex + 1, high);
+		}
+	}
+
+	private static int Partition(int[] array, int low, int high)
+	{
+		var pivotIndex = low + Random.Next(high - low + 1);
+		var pivot = array[pivotIndex];
+
+		Swap(array, pivotIndex, high);
+
+		var i = low - 1;
+
+		for (var j = low; j < high; j++)
+		{
+			if (array[j] <= pivot)
+			{
+				i++;
+				Swap(array, i, j);
+			}
+		}
+
+		Swap(array, i + 1, high);
+		return i + 1;
+	}
+
+	private static void Swap(int[] array, int i, int j)
+	{
+		(array[i], array[j]) = (array[j], array[i]);
 	}
 }

@@ -27,7 +27,7 @@ public class CovarianceContravariance
 		// Ковариантность: IProducer<string> можно присвоить IProducer<object>
 		IProducer<object> producer = new StringProducer();
 		// "Hello World"
-		object result = producer.Produce(); 
+		var result = producer.Produce(); 
 		Console.WriteLine(result);
 		
 		// Контравариантность: IConsumer<object> можно присвоить IConsumer<string>
