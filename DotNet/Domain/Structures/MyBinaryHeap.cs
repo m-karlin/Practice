@@ -1,6 +1,5 @@
 ﻿namespace App.Structures;
 
-
 public class MyBinaryHeap(int capacity, bool isMaxHeap = true)
 {
 	private readonly int[] _heap = new int[capacity];
