@@ -24,14 +24,4 @@ public class UniqueChar
 			return -1;
 		}
 	}
-
-	public static void Run()
-	{
-		// 0
-		Console.WriteLine(UniqueCharFinder.FindIndex("job"));
-		// -1
-		Console.WriteLine(UniqueCharFinder.FindIndex("aabb"));
-		// 2
-		Console.WriteLine(UniqueCharFinder.FindIndex("aacbbd"));
-	}
 }

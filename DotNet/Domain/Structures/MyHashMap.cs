@@ -15,7 +15,7 @@ public class MyHashMap<T>
 		_buckets = new List<MyHashMapEntry<T>>[capacity];
 		for (var i = 0; i < capacity; i++)
 		{
-			_buckets[i] = new List<MyHashMapEntry<T>>();
+			_buckets[i] = [];
 		}
 	}
 
