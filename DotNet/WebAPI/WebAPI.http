@@ -1,9 +1,0 @@
-@WebAPI_HostAddress = http://localhost:5094
-
-GET {{WebAPI_HostAddress}}/Algorithms/BinarySearch
-Content-Type: application/json
-
-{
-    "Numbers": [1,2,3,4,5],
-    "Target": 3
-}

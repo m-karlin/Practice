@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  postgres-test:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: myapp_test
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: test_password
+    volumes:
+      - ./test-data/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./test-data:/test-data
+    ports:
+      - "5433:5432"
